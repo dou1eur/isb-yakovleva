@@ -1,0 +1,22 @@
+INFO:root:read_file
+INFO:root:write_file
+INFO:root:formatting
+INFO:root:func get_key work
+INFO:root:read_file
+INFO:root:func vigenere_chipher work, encryption done
+INFO:root:write_file
+INFO:root:func get_key work
+INFO:root:read_file
+INFO:root:func vigenere_chipher work, encryption done
+INFO:root:write_file
+INFO:root:read_file
+INFO:root:write_file
+INFO:root:formatting
+INFO:root:func get_key work
+INFO:root:read_file
+INFO:root:func vigenere_chipher work mode:True
+INFO:root:write_file
+INFO:root:func get_key work
+INFO:root:read_file
+INFO:root:func vigenere_chipher work mode:False
+INFO:root:write_file
