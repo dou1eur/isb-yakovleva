@@ -1,30 +1,11 @@
-
+INFO:root:func get_key work
 INFO:root:read_file
-INFO:root:freq_dict created
-ERROR:root:Error replace_letters 'NoneType' object does not support item assignment
-INFO:root:read_file
-INFO:root:freq_dict created
-INFO:root:read_file
-INFO:root:freq_dict created
-INFO:root:replace_letters work
+INFO:root:func vigenere_chipher work mode:False
+INFO:root:write_file
 INFO:root:read_file
 INFO:root:freq_dict created
 INFO:root:read_file
 INFO:root:freq_dict created
-INFO:root:read_file
-INFO:root:freq_dict created
-INFO:root:read_file
-INFO:root:freq_dict created
-INFO:root:read_file
-INFO:root:freq_dict created
-INFO:root:replace_letters work
-INFO:root:read_file
-INFO:root:freq_dict created
-INFO:root:replace_letters work
-ERROR:root:Error decryption [Errno 2] No such file or directory: 'lab_X\\part2\\cod6.txt'
-INFO:root:read_file
-INFO:root:freq_dict created
-INFO:root:replace_letters work
 INFO:root:read_file
 ERROR:root:Error decryption replace() argument 2 must be str, not float
 INFO:root:read_file
@@ -32,6 +13,37 @@ INFO:root:freq_dict created
 INFO:root:read_file
 INFO:root:freq_dict created
 INFO:root:replace_letters work
+INFO:root:read_file
+INFO:root:freq_dict created
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
 INFO:root:replace_letters work
 INFO:root:replace_letters work
 INFO:root:replace_letters work
@@ -45,36 +57,11 @@ INFO:root:replace_letters work
 INFO:root:replace_letters work
 INFO:root:replace_letters work
 INFO:root:replace_letters work
-INFO:root:read_file
-INFO:root:freq_dict created
-INFO:root:replace_letters work
-INFO:root:replace_letters work
-INFO:root:replace_letters work
-INFO:root:replace_letters work
-INFO:root:read_file
-INFO:root:freq_dict created
 INFO:root:replace_letters work
 INFO:root:replace_letters work
 INFO:root:replace_letters work
 INFO:root:replace_letters work
 INFO:root:replace_letters work
-INFO:root:replace_letters work
-INFO:root:read_file
-INFO:root:freq_dict created
-INFO:root:read_file
-INFO:root:freq_dict created
-INFO:root:replace_letters work
-INFO:root:read_file
-INFO:root:freq_dict created
-INFO:root:replace_letters work
-INFO:root:read_file
-INFO:root:freq_dict created
-INFO:root:replace_letters work
-INFO:root:replace_letters work
-INFO:root:replace_letters work
-INFO:root:replace_letters work
-INFO:root:read_file
-INFO:root:freq_dict created
 INFO:root:replace_letters work
 INFO:root:replace_letters work
 INFO:root:replace_letters work
@@ -85,9 +72,74 @@ INFO:root:replace_letters work
 INFO:root:replace_letters work
 INFO:root:replace_letters work
 INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
 INFO:root:read_file
 INFO:root:freq_dict created
 INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:read_file
+INFO:root:freq_dict created
+INFO:root:read_file
+ERROR:root:Error decryption replace() argument 2 must be str, not float
+INFO:root:read_file
+INFO:root:freq_dict created
+INFO:root:replace_letters work
+INFO:root:read_file
+INFO:root:freq_dict created
 INFO:root:replace_letters work
 INFO:root:replace_letters work
 INFO:root:replace_letters work
@@ -122,6 +174,37 @@ INFO:root:replace_letters work
 INFO:root:read_file
 INFO:root:write_file
 INFO:root:read_file
-INFO:root:write_file
+INFO:root:freq_dict created
 INFO:root:read_file
-INFO:root:write_file
+INFO:root:freq_dict created
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
+INFO:root:replace_letters work
