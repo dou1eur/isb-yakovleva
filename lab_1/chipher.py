@@ -17,14 +17,24 @@ class Mode(Enum):
         True - encryption
         False - decryption
     """
-    ENCRYPTION=True
-    DECRYPTION=False
+    ENCRYPTION = True
+    DECRYPTION = False
 
 
 def get_key(keyword: str, alphabet: str, path: str) -> dict:
-    """The function receives a word, each letter
+    """
+    The function receives a word, each letter
     of which is replaced by the corresponding
-    number in the table"""
+    number in the table
+
+    Args:
+        keyword (str): accepts a keyword
+        alphabet (str): alphabet for creating a key
+        path (str): path to store the dictionary
+
+    Returns:
+        dict: the dictionary representing the generated key
+    """
     try:
         key = {}
         for i, char in enumerate(keyword):
@@ -39,7 +49,19 @@ def get_key(keyword: str, alphabet: str, path: str) -> dict:
 def vigenere_chipher(
     path: str, new_path: str, alphabet: str, key: dict, mode: Mode
 ) -> str:
-    """Encryption and decryption function using Vigenere method"""
+    """
+    Encryption and decryption function using Vigenere method
+
+    Args:
+        path (str): reading a file along the path
+        new_path (str): path for the result file
+        alphabet (str): alphabet for encryption and decryption
+        key (dict): dictionary with key for encryption and decryption
+        mode (Mode): shows the operating mode of the function
+
+    Returns:
+        str: The encrypted or decrypted text
+    """
     text = read_file(path)
     chipher = ""
     try:
@@ -67,7 +89,15 @@ def vigenere_chipher(
 
 
 def read_file(path: str) -> str:
-    """Function to read file contents"""
+    """
+    Function to read file contents
+    
+    Args:
+        path (str): path to the content file
+
+    Returns:
+        str: file contents
+    """
     try:
         with open(path, "r", encoding="utf-8") as f:
             text = f.read()
@@ -78,7 +108,13 @@ def read_file(path: str) -> str:
 
 
 def write_file(path: str, text: str) -> None:
-    """Function for recording the result of the Vigenere method"""
+    """
+    Function for recording the result of the Vigenere method
+    
+    Args:
+        path (str): path to the content file
+        text (str): str to write to file
+    """
     try:
         with open(path, "r", encoding="utf-8") as f:
             f.write(text)
@@ -88,7 +124,12 @@ def write_file(path: str, text: str) -> None:
 
 
 def formatting_text(path: str) -> None:
-    """Function for formatting text"""
+    """
+    Function for formatting text
+    
+    Args:
+        path (str): path to the content file
+    """
     try:
         text = read_file(path)
         words = text.split()
@@ -102,6 +143,13 @@ def formatting_text(path: str) -> None:
 
 
 def get_dict(dict: dict, path: str) -> None:
+    """
+    The function writes the dictionary to the json file
+    
+    Args:
+        dict (path): writable dictionary
+        path (str): path for the json file
+    """
     try:
         with open(path, "w", encoding="utf-8") as json_f:
             json.dump(dict, json_f, ensure_ascii=False)

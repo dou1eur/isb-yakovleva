@@ -9,9 +9,18 @@ logging.basicConfig(filename="lab_1/report.log", filemode="a", level=logging.INF
 
 
 def get_freq(path: str, new_path: str) -> dict:
-    """The function allows you to write a dictionary 
+    """
+    The function allows you to write a dictionary 
     using the transmitted path and the new path using 
-    the function from task 1"""
+    the function from task 1
+    
+    Args:
+        path (str): path to the content file
+        new_path (str): path to the file to write the dictionary
+
+    Returns:
+        dict: dictionary with symbol frequencies
+    """
     text = read_file(path)
     freq_dict = dict()
     try:
@@ -31,11 +40,23 @@ def replace_letters(
     freq_dict: dict, 
     old_letter: str, 
     new_letter: str, 
-    path_dict
+    path_dict: str
 ) -> str:
-    """The function takes from the user the letter 
+    """
+    The function takes from the user the letter 
     we are changing and the replacement letter and 
-    updates the dictionary"""
+    updates the dictionary
+    
+    Args:
+        text (str): the text in which the characters are replaced
+        freq_dict (dict): dictionary with character frequencies
+        old_letter (str): the character that will be replaced
+        new_letter (str): the new character to be replaced with
+        path_dict (str): path to the file for the dictionary entry
+
+    Returns:
+        str: updated text after character replacement  
+    """
     try:
         text = text.replace(old_letter, new_letter)
         freq_dict[old_letter] = new_letter
@@ -47,7 +68,14 @@ def replace_letters(
 
 
 def decryption(text_path: str, result_path: str, dict_path: str) -> None:
-    """The function modifies the ciphertext according to the dictionary"""
+    """
+    The function modifies the ciphertext according to the dictionary
+    
+    Args:
+        text_path (str): path to the ciphertext file
+        result_path (str): path to the decryption file
+        dict_path (str): path to dictionary 
+    """
     try:
         text = read_file(text_path)
         with open(dict_path, "r", encoding="utf-8") as f:
