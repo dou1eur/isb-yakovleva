@@ -10,6 +10,5 @@
     "freq_dict": "frequency.json",
     "keyword_dict": "part1.json",
     "alphabet":"АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ",
-    "keyword":"ГРАНАТ",
-    "mode": false
+    "keyword":"ГРАНАТ"
 }

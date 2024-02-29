@@ -3,29 +3,43 @@ import logging
 import os
 import re
 
+from enum import Enum
+
 
 logging.basicConfig(filename="lab_1/report.log", filemode="a", level=logging.INFO)
+
+
+class Mode(Enum):
+    """
+    The class contains modes for encryption and decryption
+
+    Modes:
+        True - encryption
+        False - decryption
+    """
+    ENCRYPTION=True
+    DECRYPTION=False
 
 
 def get_key(keyword: str, alphabet: str, path: str) -> dict:
     """The function receives a word, each letter
     of which is replaced by the corresponding
     number in the table"""
-    key = {}
-    for i, char in enumerate(keyword):
-        key[i] = alphabet.index(char)
-    get_dict(key, path)
-    logging.info("func get_key work")
+    try:
+        key = {}
+        for i, char in enumerate(keyword):
+            key[i] = alphabet.index(char)
+        get_dict(key, path)
+        logging.info("func get_key work")
+    except Exception as e:
+        logging.error(f"key problems {e}")
     return key
 
 
 def vigenere_chipher(
-    path: str, new_path: str, alphabet: str, key: dict, mode: bool
+    path: str, new_path: str, alphabet: str, key: dict, mode: Mode
 ) -> str:
-    """Encryption and decryption function using Vigenere method:
-    mode = True  - encryption
-    mode = False - decryption
-    """
+    """Encryption and decryption function using Vigenere method"""
     text = read_file(path)
     chipher = ""
     try:
@@ -34,10 +48,13 @@ def vigenere_chipher(
                 char_idx = alphabet.index(char)
                 keyword_idx = i % len(key)
                 shift = key[keyword_idx]
-                if mode == True:
-                    chipher_idx = (char_idx + shift) % len(alphabet)
-                elif mode == False:
-                    chipher_idx = (char_idx - shift) % len(alphabet)
+                match mode:
+                    case Mode.ENCRYPTION:
+                        chipher_idx = (char_idx + shift) % len(alphabet)
+                    case Mode.DECRYPTION:
+                        chipher_idx = (char_idx - shift) % len(alphabet)
+                    case _:
+                        logging.error("mode not selected")
                 chipher_char = alphabet[chipher_idx]
                 chipher += chipher_char
             else:
@@ -51,35 +68,46 @@ def vigenere_chipher(
 
 def read_file(path: str) -> str:
     """Function to read file contents"""
-    with open(path, "r", encoding="utf-8") as f:
-        text = f.read()
-    logging.info("read_file")
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            text = f.read()
+        logging.info("read_file")
+    except Exception as e:
+        logging.error(f"error in read {e}")
     return text
 
 
 def write_file(path: str, text: str) -> None:
     """Function for recording the result of the Vigenere method"""
-    new_file = open(path, "w", encoding="utf-8")
-    new_file.write(text)
-    new_file.close()
-    logging.info("write_file")
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            f.write(text)
+        logging.info("write_file")
+    except Exception as e:
+        logging.error(f"error in write_file {e}")
 
 
 def formatting_text(path: str) -> None:
     """Function for formatting text"""
     try:
         text = read_file(path)
-        upper_text = str.upper(text)
-        format_text = re.sub("\W+", " ", upper_text)
-        write_file(path, format_text)
+        words = text.split()
+        formatted_text = ' '.join(words)
+        upper_text = formatted_text.upper()
+        print(upper_text)
+        write_file(path, upper_text)
         logging.info("formatting")
     except Exception as e:
         logging.error(f"error in formatting {e}")
 
 
 def get_dict(dict: dict, path: str) -> None:
-    with open(path, "w", encoding="utf-8") as json_f:
-        json.dump(dict, json_f, ensure_ascii=False)
+    try:
+        with open(path, "w", encoding="utf-8") as json_f:
+            json.dump(dict, json_f, ensure_ascii=False)
+        logging.info("json created")
+    except Exception as e:
+        logging.error(f"error in get_dict {e}")
 
 
 if __name__ == "__main__":
@@ -95,12 +123,12 @@ if __name__ == "__main__":
         os.path.join(settings["dir"], settings["encryption"]),
         settings["alphabet"],
         key,
-        settings["mode"],
+        Mode.ENCRYPTION,
     )
     vigenere_chipher(
         (os.path.join(settings["dir"], settings["encryption"])),
         os.path.join(settings["dir"], settings["decryption"]),
         settings["alphabet"],
         key,
-        settings["mode"],
+        Mode.DECRYPTION,
     )
