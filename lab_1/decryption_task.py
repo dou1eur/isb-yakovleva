@@ -2,7 +2,7 @@ import json
 import logging
 import os
 
-from chipher import write_file, read_file, get_dict
+from files import write_file, read_file, get_dict
 
 
 logging.basicConfig(filename="lab_1/report.log", filemode="a", level=logging.INFO)
