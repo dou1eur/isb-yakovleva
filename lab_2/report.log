@@ -28,3 +28,51 @@ INFO:root:Frequency bit test passed successfully
 INFO:root:Results uploaded successfully
 INFO:root:Frequency bit test passed successfully
 INFO:root:Results uploaded successfully
+INFO:root:Frequency bit test passed successfully
+INFO:root:Results uploaded successfully
+INFO:root:Frequency bit test passed successfully
+INFO:root:Results uploaded successfully
+INFO:root:Results uploaded successfully
+INFO:root:Results uploaded successfully
+INFO:root:Statistics collected
+ERROR:root:Problem calculating chi-square and gamma function
+INFO:root:Statistics collected
+ERROR:root:Problem calculating chi-square and gamma function: 0
+INFO:root:Statistics collected
+ERROR:root:Problem calculating chi-square and gamma function: 0
+INFO:root:Statistics collected
+ERROR:root:Problem calculating chi-square and gamma function: 0
+INFO:root:Statistics collected
+INFO:root:Statistics collected
+ERROR:root:Problem calculating chi-square and gamma function: 0
+INFO:root:Statistics collected
+ERROR:root:Problem calculating chi-square and gamma function: name 'i' is not defined
+INFO:root:Statistics collected
+ERROR:root:Problem calculating chi-square and gamma function: pow() missing required argument 'exp' (pos 2)
+INFO:root:Statistics collected
+INFO:root:Statistics collected
+ERROR:root:Problem calculating chi-square and gamma function: math.gamma() takes exactly one argument (2 given)
+INFO:root:Statistics collected
+ERROR:root:Problem calculating chi-square and gamma function: math.gamma() takes exactly one argument (2 given)
+INFO:root:Statistics collected
+ERROR:root:Problem calculating chi-square and gamma function: math.gamma() takes exactly one argument (2 given)
+INFO:root:Statistics collected
+ERROR:root:Problem calculating chi-square and gamma function: math.gamma() takes exactly one argument (2 given)
+INFO:root:Statistics collected
+INFO:root:Results uploaded successfully
+INFO:root:Statistics collected
+INFO:root:Results uploaded successfully
+INFO:root:Statistics collected
+INFO:root:Results uploaded successfully
+INFO:root:Statistics collected
+INFO:root:Results uploaded successfully
+INFO:root:Frequency bit test passed successfully
+INFO:root:Results uploaded successfully
+INFO:root:Frequency bit test passed successfully
+INFO:root:Results uploaded successfully
+INFO:root:Results uploaded successfully
+INFO:root:Results uploaded successfully
+INFO:root:Statistics collected
+INFO:root:Results uploaded successfully
+INFO:root:Statistics collected
+INFO:root:Results uploaded successfully
