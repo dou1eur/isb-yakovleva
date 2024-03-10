@@ -273,3 +273,21 @@ INFO:root:Statistics collected
 INFO:root:Results uploaded successfully
 INFO:root:Statistics collected
 INFO:root:Results uploaded successfully
+INFO:root:Frequency bit test passed successfully
+INFO:root:Frequency bit test in C++: 0.859684
+
+INFO:root:Frequency bit test passed successfully
+INFO:root:Frequency bit test in Java: 0.021556
+
+INFO:root:Test 2 work
+INFO:root:Test for identical consecutive bits in C++: 0.652451
+
+INFO:root:Test 2 work
+INFO:root:Test for identical consecutive bits in Java: 0.789114
+
+INFO:root:Statistics collected
+INFO:root:Test for the longest sequence of ones in a block in C++: 0.017741
+
+INFO:root:Statistics collected
+INFO:root:Test for the longest sequence of ones in a block in Java: 0.138458
+
