@@ -64,8 +64,7 @@ def longest_sequence_test(sequence: str) -> float:
         chi_squared_distribution=0
         for v in statistic:
             chi_squared_distribution += (pow(statistic[v]-16*PI[v],2))/(16*PI[v])
-        print(chi_squared_distribution)
-        p_value=gammainc(3/2,pow(chi_squared_distribution,2)/2)
+        p_value=gammainc(3/2,chi_squared_distribution/2)
     except Exception as e:
         logging.error(f"Problem calculating chi-square and gamma function: {e}")
     return p_value
