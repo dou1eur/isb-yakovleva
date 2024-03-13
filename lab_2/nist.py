@@ -54,9 +54,9 @@ def search_identical_bits(sequence: str) -> float:
             for bit in range(len(sequence) - 1):
                 if sequence[bit] != sequence[bit + 1]:
                     v += 1
-                p_value = math.erfc(
-                    (abs(v - 2 * len(sequence) * share * (1 - share)))
-                    / (2 * math.sqrt(2 * len(sequence)) * (1 - share)))
+            p_value = math.erfc(
+                (abs(v - 2 * len(sequence) * share * (1 - share)))
+                / (2 * math.sqrt(2 * len(sequence)) * share * (1 - share)))
         else:
             p_value = 0
         logging.info("Test 2 work")
@@ -91,8 +91,12 @@ def longest_sequence_test(sequence: str) -> float:
                         counter += 1
                     else:
                         max_counter = max(max_counter, counter)
+                        counter = 0
+                max_counter = max(max_counter, counter)    
                 match max_counter:
-                    case 0, 1:
+                    case 0:
+                        statistics["v1"] += 1
+                    case 1:
                         statistics["v1"] += 1
                     case 2:
                         statistics["v2"] += 1
@@ -139,7 +143,6 @@ def save_results(result: float, path: str) -> None:
 if __name__ == "__main__":
     with open(os.path.join("lab_2", "settings.json"), "r", encoding="utf-8") as json_f:
         settings = json.load(json_f)
-    """
     save_results(
         freq_bit_test(settings["genc"]),
         os.path.join(settings["folder"], settings["file"]),
@@ -147,10 +150,9 @@ if __name__ == "__main__":
     save_results(
         freq_bit_test(settings["genj"]),
         os.path.join(settings["folder"], settings["file"]),
-    )"""
+    )
     logging.info('Frequency bit test in C++: %f\n', freq_bit_test(settings["genc"]))
     logging.info('Frequency bit test in Java: %f\n', freq_bit_test(settings["genj"]))
-    """
     save_results(
         search_identical_bits(settings["genc"]),
         os.path.join(settings["folder"], settings["file"]),
@@ -158,10 +160,9 @@ if __name__ == "__main__":
     save_results(
         search_identical_bits(settings["genj"]),
         os.path.join(settings["folder"], settings["file"]),
-    )"""
+    )
     logging.info('Test for identical consecutive bits in C++: %f\n', search_identical_bits(settings["genc"]))
     logging.info('Test for identical consecutive bits in Java: %f\n', search_identical_bits(settings["genj"]))
-    """
     save_results(
         longest_sequence_test(settings["genc"]),
         os.path.join(settings["folder"], settings["file"]),
@@ -169,7 +170,7 @@ if __name__ == "__main__":
     save_results(
         longest_sequence_test(settings["genj"]),
         os.path.join(settings["folder"], settings["file"]),
-    )"""
+    )
     logging.info('Test for the longest sequence of ones in a block in C++: %f\n', longest_sequence_test(settings["genc"]))
     logging.info('Test for the longest sequence of ones in a block in Java: %f\n', longest_sequence_test(settings["genj"]))
     
