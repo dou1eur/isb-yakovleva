@@ -77,43 +77,40 @@ def longest_sequence_test(sequence: str) -> float:
 
     Raises:
         Any error that occurs while the function is running
-        Also catches an error when creating statistics
+        LookupError: catches an error when creating statistics
     """
     try:
         blokcs = [sequence[i : i + 8] for i in range(0, len(sequence), 8)]
         statistics = {"v1": 0, "v2": 0, "v3": 0, "v4": 0}
-        try:
-            for block in blokcs:
-                max_counter = 0
-                counter = 0
-                for bit in block:
-                    if bit == "1":
-                        counter += 1
-                    else:
-                        max_counter = max(max_counter, counter)
-                        counter = 0
-                max_counter = max(max_counter, counter)    
-                match max_counter:
-                    case 0:
-                        statistics["v1"] += 1
-                    case 1:
-                        statistics["v1"] += 1
-                    case 2:
-                        statistics["v2"] += 1
-                    case 3:
-                        statistics["v3"] += 1
-                    case _:
-                        statistics["v4"] += 1
-            logging.info("Statistics collected")
-        except Exception as e:
-            logging.error("Statistics not collected")
+        for block in blokcs:
+            max_counter = 0
+            counter = 0
+            for bit in block:
+                if bit == "1":
+                    counter += 1
+                else:
+                    max_counter = max(max_counter, counter)
+                    counter = 0
+            max_counter = max(max_counter, counter)    
+            match max_counter:
+                case 0:
+                    statistics["v1"] += 1
+                case 1:
+                    statistics["v1"] += 1
+                case 2:
+                    statistics["v2"] += 1
+                case 3:
+                    statistics["v3"] += 1
+                case _:
+                    statistics["v4"] += 1
+        logging.info("Statistics collected")
         chi_squared_distribution = 0
         for v in statistics:
             chi_squared_distribution += (pow(statistics[v] - 16 * PI[v], 2)) / (
                 16 * PI[v]
             )
         p_value = gammainc(3 / 2, chi_squared_distribution / 2)
-    except Exception as e:
+    except (Exception, LookupError) as e:
         logging.error(f"Problem calculating chi-square and gamma function: {e}")
     return p_value
 
@@ -141,8 +138,11 @@ def save_results(result: float, path: str) -> None:
 
 
 if __name__ == "__main__":
-    with open(os.path.join("lab_2", "settings.json"), "r", encoding="utf-8") as json_f:
-        settings = json.load(json_f)
+    try:
+        with open(os.path.join("lab_2", "settings.json"), "r", encoding="utf-8") as json_f:
+            settings = json.load(json_f)
+    except Exception as e:
+        logging.error("Error loading json file")
     save_results(
         freq_bit_test(settings["genc"]),
         os.path.join(settings["folder"], settings["file"]),
