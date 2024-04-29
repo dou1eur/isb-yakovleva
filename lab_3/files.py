@@ -2,6 +2,7 @@ import logging
 
 logging.basicConfig(filename="lab_3/report.log", filemode="a", level=logging.INFO)
 
+
 def write_file(path: str, data: bytes) -> None:
     try:
         with open(path, "wb") as f:
@@ -11,7 +12,7 @@ def write_file(path: str, data: bytes) -> None:
 
 def read_file(path: str) -> bytes:
     try:
-        with open(path, "r") as f:
+        with open(path, "rb") as f:
             data = f.read()
         return data
     except Exception as e:

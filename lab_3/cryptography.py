@@ -1,17 +1,17 @@
 import logging
 import os
 
-from cryptography.hazmat.primitives import asymmetric
-from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
-from cryptography.hazmat.primitives import serialization, padding
-from cryptography.hazmat.primitives.serialization import load_pem_private_key
+from cryptography.hazmat.primitives import asymmetric, serialization
 
-from files import write_file, read_file
+from asymmetric import asymmetric_method, Mode
+from files import read_file, write_file
+from symmetric import decryption_symmetric, encryption_symmetric
 
 logging.basicConfig(filename="lab_3/report.log", filemode="a", level=logging.INFO)
 
 
 class Cryptography:
+
     def __init__(self, symmetric_key: str, public_key: str, private_key: str) -> None:
         self.symmetric_key = symmetric_key
         self.public_key = public_key
@@ -30,13 +30,18 @@ class Cryptography:
         write_file(self.private_key, private_key.private_bytes(encoding=serialization.Encoding.PEM,
               format=serialization.PrivateFormat.TraditionalOpenSSL,
               encryption_algorithm=serialization.NoEncryption()))
-        #Шифрование симметричным алгоритмом + сохранение (Шифровка и расшифровка симметричным методом + асимметричный => 4 функции (по файлам?))
+        encrypted_symmetric_key = asymmetric_method(symmetric_key, public_key, Mode.ENCRYPTION)
+        write_file(self.symmetric_key, encrypted_symmetric_key)
     
     def encryption(self, text_path: str, encryption_path: str) -> None:
-        """ 1. decryption for symmetric
-        2. encryption text with symmetric algorithm"""
+        key = read_file(self.symmetric_key)
+        text = read_file(text_path)  
+        encrypted_text = encryption_symmetric(text, key)
+        write_file(encryption_path, encrypted_text) 
 
     def decryption(self, encryption_path: str, decryption_path: str) -> None:
-        """ 1. decryption for symmetric
-        2. decryption text with symmetric algorithm"""
+        key = read_file(self.symmetric_key)  
+        encrypted_text = read_file(encryption_path)  
+        decrypted_text = decryption_symmetric(encrypted_text, key)
+        write_file(decryption_path, decrypted_text) 
         
