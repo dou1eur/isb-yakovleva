@@ -7,7 +7,7 @@ from asymmetric import asymmetric_method, Mode
 from files import read_file, write_file
 from symmetric import decryption_symmetric, encryption_symmetric
 
-logging.basicConfig(filename="lab_3/report.log", filemode="a", level=logging.INFO)
+logging.basicConfig(filename="report.log", filemode="a", level=logging.INFO)
 
 
 class Cryptography:
@@ -18,10 +18,10 @@ class Cryptography:
         self.private_key = private_key
     
     def generate_keys(self, key_size: int) -> None:
-        if (key_size < 32 | key_size > 442) & key_size % 8 != 0:
+        if (key_size < 32 or key_size > 442) & key_size % 8 != 0:
             logging.exception("Incorrect key_size")
-        symmetric_key = os.random(key_size / 8)
-        keys = asymmetric.rsa.generate_private_key(public_exponent=65537, key_size=2048)
+        symmetric_key = os.urandom(key_size // 8)
+        keys = asymmetric.rsa.generate_private_key(public_exponent=65537, key_size=key_size)
         private_key=keys
         public_key = keys.public_key()
         write_file(self.public_key, public_key.public_bytes(
@@ -30,7 +30,7 @@ class Cryptography:
         write_file(self.private_key, private_key.private_bytes(encoding=serialization.Encoding.PEM,
               format=serialization.PrivateFormat.TraditionalOpenSSL,
               encryption_algorithm=serialization.NoEncryption()))
-        encrypted_symmetric_key = asymmetric_method(symmetric_key, public_key, Mode.ENCRYPTION)
+        encrypted_symmetric_key = asymmetric_method(symmetric_key, public_key, Mode.GENERATE, symmetric_key)
         write_file(self.symmetric_key, encrypted_symmetric_key)
     
     def encryption(self, text_path: str, encryption_path: str) -> None:

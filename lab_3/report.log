@@ -1,0 +1,31 @@
+INFO:root:Error loading json file 'Namespace' object has no attribute 'jpath'
+INFO:root:Error loading json file 'Namespace' object has no attribute 'jpath'
+INFO:root:Error loading json file [Errno 2] No such file or directory: 'lab_3\\settings.json'
+INFO:root:Error loading json file [Errno 2] No such file or directory: 'lab_3\\settings.json'
+ERROR:root:Error in read file [Errno 2] No such file or directory: 'sym_key_path'
+ERROR:root:Error in read file [Errno 2] No such file or directory: 'lab_3/texts\\enc_text.txt'
+ERROR:root:Error in read file [Errno 2] No such file or directory: 'sym_key_path'
+INFO:root:Error in dec symmetric key must be bytes-like
+INFO:root:Error in enc symmetric Invalid key size (2048) for Blowfish.
+INFO:root:Error in enc symmetric Invalid key size (2048) for Blowfish.
+INFO:root:Error in enc symmetric Invalid key size (2048) for Blowfish.
+INFO:root:Error in enc symmetric Invalid key size (2048) for Blowfish.
+INFO:root:Error in enc symmetric Invalid key size (2048) for Blowfish.
+INFO:root:Error in enc symmetric Invalid key size (1024) for Blowfish.
+INFO:root:Error in asymmetric method Encryption failed
+ERROR:root:Error in write file a bytes-like object is required, not 'NoneType'
+INFO:root:Error in enc symmetric Invalid key size (0) for Blowfish.
+INFO:root:Error in enc symmetric Invalid key size (2048) for Blowfish.
+INFO:root:Error in enc symmetric Invalid key size (2048) for Blowfish.
+INFO:root:Error in enc symmetric Invalid key size (2048) for Blowfish.
+INFO:root:Error in enc symmetric Invalid key size (2048) for Blowfish.
+INFO:root:Error in enc symmetric Invalid key size (2048) for Blowfish.
+INFO:root:Error in dec symmetric Invalid key size (2048) for Blowfish.
+INFO:root:Error in dec symmetric Invalid padding bytes.
+INFO:root:Error in dec symmetric Invalid padding bytes.
+INFO:root:Error in dec symmetric Invalid padding bytes.
+INFO:root:Error in dec symmetric Invalid padding bytes.
+INFO:root:Error in dec symmetric Invalid key size (2048) for Blowfish.
+INFO:root:Error in asymmetric method Encryption failed
+ERROR:root:Error in write file a bytes-like object is required, not 'NoneType'
+INFO:root:Error in enc symmetric Invalid key size (0) for Blowfish.

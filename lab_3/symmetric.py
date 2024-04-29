@@ -4,12 +4,13 @@ import logging
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.primitives import padding
 
-logging.basicConfig(filename="lab_3/report.log", filemode="a", level=logging.INFO)
+logging.basicConfig(filename="report.log", filemode="a", level=logging.INFO)
 
 
 def encryption_symmetric(text: bytes, key: bytes) -> bytes:
     iv = os.urandom(8)
     try: 
+        #key = key[:16]
         cipher = Cipher(algorithms.Blowfish(key), modes.CBC(iv))
         encryptor = cipher.encryptor()
         padder = padding.ANSIX923(len(key) * 8).padder()

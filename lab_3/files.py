@@ -1,6 +1,6 @@
 import logging
 
-logging.basicConfig(filename="lab_3/report.log", filemode="a", level=logging.INFO)
+logging.basicConfig(filename="report.log", filemode="a", level=logging.INFO)
 
 
 def write_file(path: str, data: bytes) -> None:

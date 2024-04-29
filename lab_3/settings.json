@@ -1,0 +1,11 @@
+{
+    "key_size": 512,
+    "public_key": "public_key.pem", 
+    "private_key": "private_key.pem", 
+    "symmetric_key": "symmetric_key.txt",
+    "text_folder": "texts",
+    "text": "text.txt",
+    "key_folder": "keys",
+    "enc_text": "enc_text.txt",
+    "dec_text": "dec_text.txt"
+}
