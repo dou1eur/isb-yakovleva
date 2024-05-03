@@ -1,5 +1,5 @@
 {
-    "key_size": 512,
+    "key_size": 128,
     "public_key": "public_key.pem", 
     "private_key": "private_key.pem", 
     "symmetric_key": "symmetric_key.txt",

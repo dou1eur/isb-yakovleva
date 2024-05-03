@@ -29,3 +29,55 @@ INFO:root:Error in dec symmetric Invalid key size (2048) for Blowfish.
 INFO:root:Error in asymmetric method Encryption failed
 ERROR:root:Error in write file a bytes-like object is required, not 'NoneType'
 INFO:root:Error in enc symmetric Invalid key size (0) for Blowfish.
+INFO:root:Error in enc symmetric Invalid key size (2048) for Blowfish.
+INFO:root:Error in enc symmetric Invalid key size (2048) for Blowfish.
+INFO:root:Error in enc symmetric Invalid key size (2048) for Blowfish.
+INFO:root:Error in enc symmetric Invalid key size (2048) for Blowfish.
+INFO:root:Error in enc symmetric Invalid key size (2048) for Blowfish.
+INFO:root:Error in enc symmetric Invalid key size (2048) for Blowfish.
+INFO:root:Error in enc symmetric Invalid key size (2048) for Blowfish.
+ERROR:root:Error in write file binary mode doesn't take an encoding argument
+ERROR:root:Error in write file binary mode doesn't take an encoding argument
+ERROR:root:Error in write file binary mode doesn't take an encoding argument
+ERROR:root:Error in read file binary mode doesn't take an encoding argument
+ERROR:root:Error in read file binary mode doesn't take an encoding argument
+INFO:root:Error in enc symmetric data must be bytes-like
+ERROR:root:Error in read file binary mode doesn't take an encoding argument
+ERROR:root:Error in read file binary mode doesn't take an encoding argument
+INFO:root:Error in enc symmetric data must be bytes-like
+ERROR:root:Error in write file binary mode doesn't take an encoding argument
+ERROR:root:Error in write file binary mode doesn't take an encoding argument
+ERROR:root:Error in write file binary mode doesn't take an encoding argument
+ERROR:root:Error in read file binary mode doesn't take an encoding argument
+INFO:root:Error in asymmetric method 'str' object has no attribute 'decrypt'
+ERROR:root:Error in read file binary mode doesn't take an encoding argument
+INFO:root:Error in enc symmetric data must be bytes-like
+ERROR:root:Error in write file binary mode doesn't take an encoding argument
+ERROR:root:Error in write file binary mode doesn't take an encoding argument
+ERROR:root:Error in write file binary mode doesn't take an encoding argument
+ERROR:root:Error in read file binary mode doesn't take an encoding argument
+INFO:root:Error in asymmetric method 'str' object has no attribute 'decrypt'
+ERROR:root:Error in read file binary mode doesn't take an encoding argument
+INFO:root:Error in enc symmetric data must be bytes-like
+ERROR:root:Error in read file binary mode doesn't take an encoding argument
+INFO:root:Error in asymmetric method 'str' object has no attribute 'decrypt'
+ERROR:root:Error in read file binary mode doesn't take an encoding argument
+INFO:root:Error in enc symmetric data must be bytes-like
+INFO:root:Error in asymmetric method 'str' object has no attribute 'decrypt'
+INFO:root:Error in enc symmetric key must be bytes-like
+INFO:root:Error in asymmetric method 'str' object has no attribute 'decrypt'
+INFO:root:Error in enc symmetric key must be bytes-like
+INFO:root:Error in asymmetric method unsupported operand type(s) for //: 'cryptography.hazmat.bindings._rust.openssl.rsa.RSAPublicKey' and 'int'
+ERROR:root:Error in write file a bytes-like object is required, not 'NoneType'
+INFO:root:Error in enc symmetric Invalid key size (2048) for Blowfish.
+INFO:root:Error in dec symmetric Invalid key size (2048) for Blowfish.
+INFO:root:Error in dec symmetric Invalid key size (2048) for Blowfish.
+INFO:root:Error in dec symmetric Invalid key size (2048) for Blowfish.
+INFO:root:Error in dec symmetric key must be bytes-like
+INFO:root:Error in dec symmetric key must be bytes-like
+INFO:root:Error in dec symmetric key must be bytes-like
+INFO:root:Error in dec symmetric key must be bytes-like
+INFO:root:Error in dec symmetric key must be bytes-like
+INFO:root:Error in enc symmetric Invalid key size (16) for Blowfish.
+INFO:root:Error in enc symmetric Invalid key size (16) for Blowfish.
+INFO:root:Error in enc symmetric Invalid key size (16) for Blowfish.

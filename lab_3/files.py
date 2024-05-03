@@ -5,7 +5,7 @@ logging.basicConfig(filename="report.log", filemode="a", level=logging.INFO)
 
 def write_file(path: str, data: bytes) -> None:
     try:
-        with open(path, "wb") as f:
+        with open(path, "wb" ) as f:
             f.write(data)
     except Exception as e:
         logging.error(f"Error in write file {e}")

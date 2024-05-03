@@ -5,6 +5,7 @@ import os
 
 from crypto import Cryptography
 
+
 from asymmetric import Mode
 
 logging.basicConfig(filename="report.log", filemode="a", level=logging.INFO)
@@ -18,7 +19,7 @@ if __name__ == "__main__":
         "-m",
         "--mode",
         type=int,
-        default= Mode.ENCRYPTION,
+        default= Mode.DECRYPTION,
         choices =range(3),
         help = "0 - Decryption, 1 - Encryption, 2 - Generate"
     )
