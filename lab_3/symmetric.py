@@ -8,8 +8,17 @@ from cryptography.hazmat.primitives import padding
 logging.basicConfig(filename="report.log", filemode="a", level=logging.INFO)
 
 
-
 def encryption_symmetric(text: bytes, key: rsa.RSAPublicKey) -> bytes:
+    """
+    Encrypts text using symmetric encryption
+
+    Args:
+        text (bytes): the text to be encrypted
+        key (rsa.RSAPublicKey): the public key for encryption
+
+    Returns:
+        bytes: the encrypted text
+    """
     try: 
         padder = padding.ANSIX923(64).padder()
         padded_text = padder.update(text) + padder.finalize()
@@ -21,10 +30,21 @@ def encryption_symmetric(text: bytes, key: rsa.RSAPublicKey) -> bytes:
         logging.info(f"Error in enc symmetric {e}")
     return c_text
 
+
 def decryption_symmetric(text: bytes, key: rsa.RSAPublicKey) -> bytes:
-    iv = text[:8]
-    text = text[8:]
+    """
+    Decrypts text using symmetric decryption
+
+    Args:
+        text (bytes): the text to be decrypted
+        key (rsa.RSAPublicKey): the public key for decryption
+
+    Returns:
+        bytes: the decrypted text
+    """
     try:
+        iv = text[:8]
+        text = text[8:]
         cipher = Cipher(algorithms.Blowfish(key), modes.CBC(iv))
         decryptor = cipher.decryptor()
         dc_text = decryptor.update(text) + decryptor.finalize()
