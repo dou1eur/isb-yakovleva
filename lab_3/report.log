@@ -80,4 +80,4 @@ INFO:root:Error in dec symmetric key must be bytes-like
 INFO:root:Error in dec symmetric key must be bytes-like
 INFO:root:Error in enc symmetric Invalid key size (16) for Blowfish.
 INFO:root:Error in enc symmetric Invalid key size (16) for Blowfish.
-
+INFO:root:Error in enc symmetric Invalid key size (16) for Blowfish.
