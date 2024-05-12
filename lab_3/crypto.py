@@ -33,7 +33,7 @@ class Cryptography:
         self.symmetric_key = symmetric_key
         self.public_key = public_key
         self.private_key = private_key
-
+ 
     def generate_keys(self, key_size: int) -> None:
         """
         Generate symmetric and asymmetric keys of the specified size and store them in files
