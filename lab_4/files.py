@@ -11,5 +11,3 @@ def save_number(result: str, save_path: str) -> None:
     except Exception as e:
         logging.error(f"Error writing to file {e}")
 
-
-

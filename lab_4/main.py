@@ -1,45 +1,107 @@
-import argparse
-import json
+import sys
 import logging
-import os
 
-from funсtions import luna_algorithm, number_search
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLineEdit, QVBoxLayout, QMessageBox, QComboBox
+
+from funсtions import collision_search, luna_algorithm, number_search
 
 logging.basicConfig(filename="lab_4//report.log", filemode="a", level=logging.INFO)
 
 
+class MainWindow(QWidget):
+    
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Options")
+        layout = QVBoxLayout()
+
+        self.options = QComboBox()
+        self.options.addItem("Search for card number")
+        self.options.addItem("Check Luna algorithm")
+        self.options.addItem("Collision Search")
+        self.options.currentIndexChanged.connect(self.selection)
+        layout.addWidget(self.options)
+
+        self.button_hash = QLineEdit()
+        layout.addWidget(self.button_hash)
+
+        self.button_last_numbers = QLineEdit()
+        layout.addWidget(self.button_last_numbers)
+
+        self.button_path = QLineEdit()
+        layout.addWidget(self.button_path)
+
+        self.button_iin = QLineEdit()
+        layout.addWidget(self.button_iin)
+
+        self.button_options = QPushButton("Выполнить")
+        self.button_options.clicked.connect(self.parameters)
+        layout.addWidget(self.button_options)
+
+        self.setLayout(layout)
+
+    def selection(self, index):
+        option = self.options.currentText()
+        if index == 0:
+            self.button_hash.setPlaceholderText('Enter hash')
+            self.button_last_numbers.setPlaceholderText('Enter the last numbers of the card')
+            self.button_path.setPlaceholderText('Enter the path where you want to save the number')
+            self.button_iin.setPlaceholderText('Enter iin')
+        match index:
+            case 1:
+                self.button_last_numbers.setPlaceholderText('Enter the card number to check the Luna algorithm')
+            case 2:
+                self.button_hash.setPlaceholderText('Enter hash')
+                self.button_last_numbers.setPlaceholderText('Enter the last numbers of the card')
+                self.button_iin.setPlaceholderText('Enter iin')
+
+    def parameters(self):
+        option = self.options.currentText()
+        match option:
+            case "Search for card number":
+                self.card_number()
+            case "Check Luna algorithm":
+                self.algorithm()
+            case "Collision Search":
+                self.collision()
+
+    def card_number(self) -> None:
+        try:
+            if number_search(self.button_hash.text(), int(self.button_last_numbers.text()), self.button_path.text(), self.button_iin.text()):
+                QMessageBox.information(self, 'Card number found', 'Card number found')
+                logging.info('card number found')
+            QMessageBox.information(self, 'Card number not found', 'Card number not found')
+        except Exception as e:
+            logging.error(f'Error in number_search {e}')
+ 
+    def algorithm(self) -> None:
+        try:
+            if not luna_algorithm(self.button_last_numbers.text()):
+                QMessageBox.information(self, 'Luna algorithm not passed', 'Luna algorithm not passed')
+            else:
+                QMessageBox.information(self, 'Luna algorithm passed', 'Luna algorithm passed')
+            logging.info("Luna algorithm work")
+        except Exception as e:
+            logging.error(f'Error luna algorithm {e}')
+
+    def collision(self) -> None:
+        try:
+            if collision_search(self.button_hash.text(), int(self.button_last_numbers.text()), self.button_iin.text()):
+                QMessageBox.information(self, 'Statistics collected', 'Statistics collected')
+                logging.info("Statistics collected")
+            else:
+                QMessageBox.information(self, 'Statistics not collected', 'Statistics not collected')
+        except Exception as e:
+            logging.error(f'Error luna algorithm {e}')
+
+     
 if __name__ == "__main__":
     try:
-        parser = argparse.ArgumentParser(description="Options")
-        parser.add_argument(
-            "-option",
-            "--opt",
-            type=int,
-            
-            choices=range(3),
-            help="Choose an option: 0 - Selection of card number by hash, 1 - Applying the Luhn algorithm")
-        parser.add_argument("-json","--jpath",type=str, default=os.path.join("lab_4/settings.json"),help="Path to json_file")
-        parser.add_argument("-hash", "--hash_value", type=str, help="hash cards")
-        parser.add_argument("-sp", "--save_path", type=str, help="path to save card number")
-        parser.add_argument("-l", "--list_iin", type=str,  help="list containing iin")
-        parser.add_argument("-ln", "--last_numbers", type=str, help="card last numbers") 
-        parser.add_argument("-card", "--card_number", type=str, help="Credit card number to apply Luhn algorithm")
-        args = parser.parse_args()
-        with open(args.jpath, mode="r", encoding="utf-8") as f:
-                settings = json.load(f)
-        parser.set_defaults(hash_value=settings["hash"])
-        parser.set_defaults(save_path=os.path.join(settings["folder"],settings["file"]))
-        parser.set_defaults(list_iin=settings["iins"])
-        parser.set_defaults(last_numbers=settings["last_numbers"])
-        match args.opt:
-            case 0: 
-                number_search(args.hash_value, args.last_numbers, args.save_path, args.list_iin)
-            case 1:
-                if (luna_algorithm(args.card_number)):
-                    print("Luna algorithm is valid")
-                else: 
-                    print("Luna algorithm is invalid")
-            case _:
-                logging.error("Incorrect option")
+        app = QApplication(sys.argv)
+        window = MainWindow()
+        window.show()
+        app.exec_()
     except Exception as e:
          logging.error(f'Problems in main {e}')
+
+

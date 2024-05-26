@@ -1,24 +1,27 @@
 import hashlib
 import logging
 import multiprocessing as mp
+import time
+
+from matplotlib import pyplot as plt
+import numpy as np
 
 from files import save_number
 
 logging.basicConfig(filename="lab_4//report.log", filemode="a")
 
 
-def checking_numbers(hash: str, last_numbers: str, middle_number: int, iins: list) -> str:
+def checking_numbers(hash: str, last_numbers: str, middle_number: int, iin: str) -> str:
     try:
-        for iin in iins:
-            iin_hash = hashlib.sha384(f"{iin}{middle_number:0>6}{last_numbers:0>4}".encode()).hexdigest()
-            if iin_hash == hash:
-                logging.info('Number found')
-                return f"{iin}{middle_number:0>6}{last_numbers:0>4}"
+        iin_hash = hashlib.sha384(f"{iin}{middle_number:0>6}{last_numbers:0>4}".encode()).hexdigest()
+        if iin_hash == hash:
+            logging.info('Number found')
+            return f"{iin}{middle_number:0>6}{last_numbers:0>4}"
     except Exception as e:
         logging.error(f'Error when comparing hashes {e}')
 
 
-def number_search(hash: str, last_numbers: str, save_path: str, iins: list) -> None:
+def number_search(hash: str, last_numbers: str, save_path: str, iins: str) -> None:
     try:
         cores = mp.cpu_count()
         with mp.Pool(processes=cores) as p:
@@ -51,3 +54,26 @@ def luna_algorithm(card_number: str) -> bool:
         logging.info('Luna algorithm not passed')
     except Exception as e:
         logging.info(f'Error in luna algorithm {e}')
+
+
+def collision_search(hash: str, last_numbers: str, iin: str) -> None:
+    try:
+        results = []
+        cores = mp.cpu_count()/2
+        for num_core in range(1, int(1.5 * cores)):
+            start_time = time.time()
+            with mp.Pool(processes=num_core) as p:
+                p.starmap(checking_numbers, [(hash, last_numbers, i, [iin]) for i in range(0, 999999)])
+                total_time = time.time() - start_time
+                results.append(total_time)
+        logging.info('Statistics collected')
+        plt.title('Collision search')
+        plt.xlabel('num processes')
+        plt.ylabel('search time')
+        plt.plot(range(1, int(1.5 * cores)), results, color='navy', linestyle='--', marker='x', linewidth=1, markersize=4)
+        plt.show()
+    except Exception as e:
+        logging.error(f'Error during collision search {e}')
+
+
+    
