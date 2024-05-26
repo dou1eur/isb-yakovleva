@@ -13,4 +13,3 @@ def save_number(result: str, save_path: str) -> None:
 
 
 
-
