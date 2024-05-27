@@ -58,12 +58,12 @@ class MainWindow(QWidget):
             index (int): index of the selected option
         """
         option = self.options.currentText()
-        if index == 0:
-            self.button_hash.setPlaceholderText("Enter hash")
-            self.button_last_numbers.setPlaceholderText("Enter the last numbers of the card")
-            self.button_path.setPlaceholderText("Enter the path where you want to save the number")
-            self.button_iin.setPlaceholderText("Enter iin")
         match index:
+            case 0:
+                self.button_hash.setPlaceholderText("Enter hash")
+                self.button_last_numbers.setPlaceholderText("Enter the last numbers of the card")
+                self.button_path.setPlaceholderText("Enter the path where you want to save the number")
+                self.button_iin.setPlaceholderText("Enter iin")
             case 1:
                 self.button_last_numbers.setPlaceholderText("Enter the card number to check the Luna algorithm")
             case 2:
@@ -89,15 +89,16 @@ class MainWindow(QWidget):
         Perform a search for a card number based on user input
         """
         try:
+            iin_values = self.button_iin.text().split(",")
             if number_search(
                 self.button_hash.text(),
                 int(self.button_last_numbers.text()),
                 self.button_path.text(),
-                self.button_iin.text(),):
+                iin_values): 
                 QMessageBox.information(self, "Card number found", "Card number found")
                 logging.info("card number found")
-            QMessageBox.information(
-                self, "Card number not found", "Card number not found")
+            else:
+                QMessageBox.information(self, "Card number not found", "Card number not found")
         except Exception as e:
             logging.error(f"Error in number_search {e}")
 
@@ -110,8 +111,7 @@ class MainWindow(QWidget):
                 QMessageBox.information(
                     self, "Luna algorithm not passed", "Luna algorithm not passed")
             else:
-                QMessageBox.information(
-                    self, "Luna algorithm passed", "Luna algorithm passed")
+                QMessageBox.information(self, "Luna algorithm passed", "Luna algorithm passed")
             logging.info("Luna algorithm work")
         except Exception as e:
             logging.error(f"Error luna algorithm {e}")
@@ -121,16 +121,15 @@ class MainWindow(QWidget):
         Perform a hash collision search
         """
         try:
+            iin_values = self.button_iin.text().split(",")
             if collision_search(
                 self.button_hash.text(),
                 int(self.button_last_numbers.text()),
-                self.button_iin.text(),):
-                QMessageBox.information(
-                    self, "Statistics collected", "Statistics collected")
+                iin_values):
+                QMessageBox.information(self, "Statistics collected", "Statistics collected")
                 logging.info("Statistics collected")
             else:
-                QMessageBox.information(
-                    self, "Statistics not collected", "Statistics not collected")
+                QMessageBox.information(self, "Statistics not collected", "Statistics not collected")
         except Exception as e:
             logging.error(f"Error during collision search {e}")
 

@@ -33,7 +33,7 @@ def checking_numbers(hash: str, last_numbers: str, middle_number: int, iin: str)
         logging.error(f"Error when comparing hashes {e}")
 
 
-def number_search(hash: str, last_numbers: str, save_path: str, iins: str) -> None:
+def number_search(hash: str, last_numbers: str, save_path: str, iins: list) -> None:
     """
     The function loops through the numbers and compares them with the given hash
 
@@ -41,16 +41,17 @@ def number_search(hash: str, last_numbers: str, save_path: str, iins: str) -> No
         hash (str): hash for comparison
         last_numbers (str): last 4 digits of card number
         save_path (str): path where you need to save the card number
-        iin (str): the individual identification number
+        iins (list): list of individual identification numbers
     """
     try:
         cores = mp.cpu_count()
         with mp.Pool(processes=cores) as p:
-            for result in p.starmap(
-                checking_numbers, [(hash, last_numbers, i, iins) for i in range(999999)]):
-                if result:
-                    save_number(result, save_path)
-                    return result
+            for iin in iins:
+                results = p.starmap(checking_numbers, [(hash, last_numbers, i, iin) for i in range(999999)])
+                for result in results:
+                    if result:
+                        save_number(result, save_path)
+                        return result
         logging.info("Number not found")
     except Exception as e:
         logging.error(f"Error when searching number {e}")
@@ -87,14 +88,14 @@ def luna_algorithm(card_number: str) -> bool:
         logging.info(f"Error in luna algorithm {e}")
 
 
-def collision_search(hash: str, last_numbers: str, iin: str) -> None:
+def collision_search(hash: str, last_numbers: str, iins: list) -> None:
     """
     The function collects the hash determination time when dividing the number of processes
 
     Args:
         hash (str): hash for comparison
         last_numbers (str): last 4 digits of card number
-        iin (str): the individual identification number
+        iin (list): lsit of individual identification number
     """
     try:
         results = []
@@ -104,7 +105,7 @@ def collision_search(hash: str, last_numbers: str, iin: str) -> None:
             with mp.Pool(processes=num_core) as p:
                 p.starmap(
                     checking_numbers,
-                    [(hash, last_numbers, i, [iin]) for i in range(0, 999999)],)
+                    [(hash, last_numbers, i, iin) for iin in iins for i in range(0, 999999)],)
                 total_time = time.time() - start_time
                 results.append(total_time)
         logging.info("Statistics collected")
